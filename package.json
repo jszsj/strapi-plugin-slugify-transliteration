@@ -1,8 +1,8 @@
 {
 	"$schema": "https://json.schemastore.org/package",
 	"name": "strapi-plugin-slugify-transliteration",
-	"version": "0.1.1",
-	"description": "A plugin for Strapi Headless CMS that provides the ability to auto slugify a field for any content type.",
+	"version": "0.1.2",
+	"description": "A plugin for Strapi forked from strapi-plugin-slugify, use transliteration to support Universal Unicode to Latin transliteration.",
 	"scripts": {
 		"lint": "eslint . --fix",
 		"format": "prettier --write **/*.{ts,js,json,yml}"
