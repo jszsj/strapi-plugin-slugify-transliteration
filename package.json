@@ -1,32 +1,33 @@
 {
 	"$schema": "https://json.schemastore.org/package",
-	"name": "strapi-plugin-slugify",
-	"version": "2.3.2",
+	"name": "strapi-plugin-slugify-transliteration",
+	"version": "0.1.0",
 	"description": "A plugin for Strapi Headless CMS that provides the ability to auto slugify a field for any content type.",
 	"scripts": {
 		"lint": "eslint . --fix",
 		"format": "prettier --write **/*.{ts,js,json,yml}"
 	},
 	"author": {
-		"name": "@ComfortablyCoding",
-		"url": "https://github.com/ComfortablyCoding"
+		"name": "@jszsj",
+		"url": "https://github.com/jszsj"
 	},
 	"maintainers": [
 		{
-			"name": "@ComfortablyCoding",
-			"url": "https://github.com/ComfortablyCoding"
+			"name": "@jszsj",
+			"url": "https://github.com/jszsj"
 		}
 	],
-	"homepage": "https://github.com/ComfortablyCoding/strapi-plugin-slugify#readme",
+	"homepage": "https://github.com/jszsj/strapi-plugin-slugify-transliteration#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/ComfortablyCoding/strapi-plugin-slugify.git"
+		"url": "https://github.com/jszsj/strapi-plugin-slugify-transliteration.git"
 	},
 	"bugs": {
-		"url": "https://github.com/ComfortablyCoding/strapi-plugin-slugify/issues"
+		"url": "https://github.com/jszsj/strapi-plugin-slugify-transliteration/issues"
 	},
 	"dependencies": {
-		"@sindresorhus/slugify": "1.1.0"
+		"@sindresorhus/slugify": "1.1.0",
+    "transliteration": "^2.3.5"
 	},
 	"devDependencies": {
 		"eslint": "^8.8.0",

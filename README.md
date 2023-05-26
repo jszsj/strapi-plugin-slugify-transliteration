@@ -1,3 +1,9 @@
+# strapi-plugin-slugify-transliteration
+A plugin for [Strapi](https://github.com/strapi/strapi) forked from [ComfortablyCoding/strapi-plugin-slugify](https://github.com/ComfortablyCoding/strapi-plugin-slugify),use [transliteration](https://github.com/dzcpy/transliteration) to support Universal Unicode to Latin transliteration.
+
+
+Original README for more info:
+
 # strapi-plugin-slugify
 
 A plugin for [Strapi](https://github.com/strapi/strapi) that provides the ability to auto slugify a field for any content type. It also provides a findOne by slug endpoint as a utility.
@@ -19,11 +25,11 @@ The installation requirements are the same as Strapi itself and can be found in 
 ## Installation
 
 ```sh
-npm install strapi-plugin-slugify
+npm install strapi-plugin-slugify-transliteration
 
 # or
 
-yarn add strapi-plugin-slugify
+yarn add strapi-plugin-slugify-transliteration
 ```
 
 ## Configuration

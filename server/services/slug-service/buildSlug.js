@@ -1,7 +1,9 @@
 const slugify = require('@sindresorhus/slugify');
+const { slugify: slugifyTransliteration } = require('transliteration');
 
 const buildSlug = async (string, settings) => {
-	let slug = slugify(string, settings.slugifyOptions);
+	// TODO: add settings for use transliteration or not
+	let slug = slugifyTransliteration(string, settings.slugifyOptions);
 
 	// slugify with count
 	if (!settings.slugifyWithCount) {
