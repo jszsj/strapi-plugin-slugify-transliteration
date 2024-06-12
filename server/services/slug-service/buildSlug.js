@@ -34,7 +34,8 @@ const buildSlug = async (string, settings) => {
 		},
 	});
 
-	return `${slug}-${count}`;
+	const separator = settings.slugifyOptions.separator || '-';
+	return `${slug}${separator}${count}`;
 };
 
 module.exports = {

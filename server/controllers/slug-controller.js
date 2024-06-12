@@ -1,12 +1,11 @@
 'use strict';
 
 const _ = require('lodash');
-const { NotFoundError } = require('@strapi/utils').errors;
 const { getPluginService } = require('../utils/getPluginService');
-const { transformResponse } = require('@strapi/strapi/lib/core-api/controller/transform');
 const { isValidFindSlugParams } = require('../utils/isValidFindSlugParams');
 const { sanitizeOutput } = require('../utils/sanitizeOutput');
 const { hasRequiredModelScopes } = require('../utils/hasRequiredModelScopes');
+const transform = require('../utils/transform');
 
 module.exports = ({ strapi }) => ({
 	async findSlug(ctx) {
@@ -14,15 +13,23 @@ module.exports = ({ strapi }) => ({
 		const { modelName, slug } = ctx.request.params;
 		const { auth } = ctx.state;
 
-		isValidFindSlugParams({
-			modelName,
-			slug,
-			modelsByName,
-		});
+		try {
+			isValidFindSlugParams({
+				modelName,
+				slug,
+				modelsByName,
+			});
+		} catch (error) {
+			return ctx.badRequest(error.message);
+		}
 
 		const { uid, field, contentType } = modelsByName[modelName];
 
-		await hasRequiredModelScopes(strapi, uid, auth);
+		try {
+			await hasRequiredModelScopes(strapi, uid, auth);
+		} catch (error) {
+			return ctx.forbidden();
+		}
 
 		// add slug filter to any already existing query restrictions
 		let query = ctx.query || {};
@@ -40,9 +47,9 @@ module.exports = ({ strapi }) => ({
 
 		if (data) {
 			const sanitizedEntity = await sanitizeOutput(data, contentType, auth);
-			ctx.body = transformResponse(sanitizedEntity, {}, { contentType });
+			ctx.body = transform.response({ data: sanitizedEntity, schema: contentType });
 		} else {
-			throw new NotFoundError();
+			ctx.notFound();
 		}
 	},
 });
